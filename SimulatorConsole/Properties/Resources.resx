@@ -1,0 +1,600 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ClearCaches" xml:space="preserve">
+    <value>DBCC FREEPROCCACHE;DBCC DROPCLEANBUFFERS</value>
+  </data>
+  <data name="ClientScheduleGroupSql" xml:space="preserve">
+    <value>SELECT TOP {0} subTable.ClientId
+from
+(SELECT 
+row_number() OVER(PARTITION BY sch_ClientID	 ORDER BY sch_ID) AS RowNum,
+sch_ClientID AS ClientId,
+sch_ID AS ID
+FROM T_Schedules WITH (NOLOCK)) subTable
+WHERE
+subTable.RowNum &lt;= 5 AND subTable.RowNum &gt;= 3
+GROUP BY subTable.ClientId
+ORDER BY subTable.ClientId desc</value>
+  </data>
+  <data name="Kill_Process_Sql" xml:space="preserve">
+    <value>USE master;
+DECLARE @kill varchar(8000); SET @kill = '';  
+SELECT @kill = @kill + 'kill ' + CONVERT(varchar(5), spid) + ';'  
+FROM master..sysprocesses  
+WHERE dbid = db_id('{0}')
+
+EXEC(@kill);</value>
+  </data>
+  <data name="MetricDetailSql" xml:space="preserve">
+    <value>WITH DB_CPU AS
+(SELECT	DB_Name(DatabaseID) AS [DatabaseName],
+		CONVERT(NVARCHAR(250),t.text) AS sqltxt,
+		SUM(total_elapsed_time) AS total_elapsed_time ,
+		SUM(total_worker_time) AS total_worker_time ,
+		SUM(total_logical_reads) AS total_logical_reads ,
+		SUM(execution_count) AS execution_count
+FROM	sys.dm_exec_query_stats AS qs 
+CROSS APPLY(SELECT	CONVERT(int, value)AS [DatabaseID]  
+			FROM	sys.dm_exec_plan_attributes(qs.plan_handle)  
+			WHERE	attribute =N'dbid') AS epa 
+CROSS APPLY(SELECT	CONVERT(int, value) AS [ProcID]  
+		FROM	sys.dm_exec_plan_attributes(qs.plan_handle)  
+		WHERE	attribute =N'objectid') AS procDetails 	
+CROSS APPLY sys.dm_exec_sql_text(qs.sql_handle) AS t
+WHERE 
+NOT (t.text LIKE '%dm_exec_%' OR 
+t.text LIKE '%change_tracking%' OR 
+t.text LIKE '%XmlSchemaNamespaceSchema%' OR
+t.text LIKE '%sys.all_views%' OR
+t.text LIKE '%sys.tables%' OR
+t.text LIKE '%sys.database_principals%' OR
+t.text LIKE '%sys.all_objects%' 
+)
+GROUP BY DatabaseID, CONVERT(NVARCHAR(250),t.text)) 
+INSERT INTO testrun_data
+(
+    testrun_id,
+	SqlText,
+    Elapsed_Time,
+    Cpu,
+	Reads,
+    Execution_Count
+)
+SELECT	
+{1},
+sqltxt,
+total_elapsed_time,
+total_worker_time,
+total_logical_reads,
+execution_count
+FROM	DB_CPU 
+WHERE	DatabaseName = '{0}' 
+ OPTION(RECOMPILE);</value>
+  </data>
+  <data name="MetricSql" xml:space="preserve">
+    <value>WITH DB_CPU AS
+(SELECT	DB_Name(DatabaseID) AS [DatabaseName], 
+		OBJECT_NAME(CAST([ProcID] AS INT),DatabaseID) AS ObjectName,
+		SUM(CONVERT(DECIMAL(18,4),total_worker_time)) AS TotalCpuTime ,
+		SUM(CONVERT(DECIMAL(18,4),total_elapsed_time)) AS TotalElapsedTime ,
+		SUM(CONVERT(DECIMAL(18,4),total_logical_reads)) AS TotalLogicalReads ,
+		SUM(CONVERT(DECIMAL(18,4),total_physical_reads)) AS TotalPhysicalReads,
+		SUM(CONVERT(DECIMAL(18,4),total_elapsed_time)) AS ElapsedTime,
+		SUM(execution_count) AS ExecutionCount
+FROM	sys.dm_exec_query_stats AS qs 
+CROSS APPLY(SELECT	CONVERT(int, value)AS [DatabaseID]  
+			FROM	sys.dm_exec_plan_attributes(qs.plan_handle)  
+			WHERE	attribute =N'dbid') AS epa 
+CROSS APPLY(SELECT	CONVERT(int, value) AS [ProcID]  
+		FROM	sys.dm_exec_plan_attributes(qs.plan_handle)  
+		WHERE	attribute =N'objectid') AS procDetails 	
+CROSS APPLY sys.dm_exec_sql_text(qs.sql_handle) AS t
+WHERE 
+NOT (t.text LIKE '%dm_exec_%' OR t.text LIKE '%change_tracking%')
+GROUP BY DatabaseID, [ProcID]) 
+SELECT	*
+FROM	DB_CPU 
+WHERE	DatabaseName = '{0}' and ObjectName = '{1}'
+ OPTION(RECOMPILE);</value>
+  </data>
+  <data name="MetricSqlAllDatabase" xml:space="preserve">
+    <value>WITH DB_CPU AS
+(SELECT	DB_Name(DatabaseID) AS [DatabaseName], 
+		SUM(CONVERT(DECIMAL(18,4),total_worker_time)) AS TotalCpuTime ,
+		SUM(CONVERT(DECIMAL(18,4),total_elapsed_time)) AS TotalElapsedTime ,
+		SUM(CONVERT(DECIMAL(18,4),total_logical_reads)) AS TotalLogicalReads ,
+		SUM(CONVERT(DECIMAL(18,4),total_physical_reads)) AS TotalPhysicalReads,
+		SUM(CONVERT(DECIMAL(18,4),total_elapsed_time)) AS ElapsedTime,
+		SUM(CONVERT(DECIMAL(18,4),execution_count)) AS ExecutionCount
+
+FROM	sys.dm_exec_query_stats AS qs 
+CROSS APPLY(SELECT	CONVERT(int, value)AS [DatabaseID]  
+			FROM	sys.dm_exec_plan_attributes(qs.plan_handle)  
+			WHERE	attribute =N'dbid') AS epa 
+CROSS APPLY(SELECT	CONVERT(int, value) AS [ProcID]  
+		FROM	sys.dm_exec_plan_attributes(qs.plan_handle)  
+		WHERE	attribute =N'objectid') AS procDetails 	
+CROSS APPLY sys.dm_exec_sql_text(qs.sql_handle) AS t
+WHERE 
+NOT (t.text LIKE '%dm_exec_%' OR 
+t.text LIKE '%change_tracking%' OR 
+t.text LIKE '%XmlSchemaNamespaceSchema%' OR
+t.text LIKE '%sys.all_views%' OR
+t.text LIKE '%sys.tables%' OR
+t.text LIKE '%sys.database_principals%' OR
+t.text LIKE '%sys.all_objects%'
+)
+GROUP BY DatabaseID) 
+SELECT	*
+FROM	DB_CPU 
+WHERE	DatabaseName = '{0}' 
+ OPTION(RECOMPILE);</value>
+  </data>
+  <data name="PayerCacheInsert" xml:space="preserve">
+    <value>INSERT INTO [dbo].[T_Payers]
+           ([pay_BranchID]
+           ,[pay_ClientID]
+           ,[pay_Name]
+           ,[pay_Address1]
+           ,[pay_Address2]
+           ,[pay_City]
+           ,[pay_StateOrProvince]
+           ,[pay_PostalCode]
+           ,[pay_County]
+           ,[pay_Country]
+           ,[pay_Active]
+           ,[pay_ContactSalut]
+           ,[pay_ContactTitle]
+           ,[pay_ContactFirstName]
+           ,[pay_ContactLastName]
+           ,[pay_Phone]
+           ,[pay_PhoneType]
+           ,[pay_Notes]
+           ,[pay_PayerTypeID]
+           ,[pay_NPI]
+           ,[pay_BillTypeID]
+           ,[pay_AgencyProviderNum]
+           ,[pay_ExcludeFromBatch]
+           ,[pay_PaymentTypeID]
+           ,[pay_RegionID]
+           ,[pay_AuthRequired]
+           ,[pay_AnsiISAFI01]
+           ,[pay_AnsiISAFI02]
+           ,[pay_AnsiISAFI03]
+           ,[pay_AnsiISAFI04]
+           ,[pay_AnsiISAFI05_1]
+           ,[pay_AnsiISAFI06]
+           ,[pay_AnsiISAFI05_2]
+           ,[pay_AnsiISAFI07]
+           ,[pay_AnsiISAFI10]
+           ,[pay_AnsiISAFI11]
+           ,[pay_AnsiISAFI12]
+           ,[pay_AnsiISAFI13]
+           ,[pay_AnsiISAFI14]
+           ,[pay_AnsiISAFI15]
+           ,[pay_AnsiGSF479]
+           ,[pay_AnsiGSF28]
+           ,[pay_AnsiGSF455]
+           ,[pay_AnsiGSF480]
+           ,[pay_AnsiSTF143]
+           ,[pay_AnsiSTF329]
+           ,[pay_AnsiSTF1705]
+           ,[pay_AnsiBHTF1005]
+           ,[pay_AnsiHeaderREFF128]
+           ,[pay_AnsiHeaderREFF127]
+           ,[pay_AnsiLoop1000ANM1F98]
+           ,[pay_AnsiLoop1000BNM1F98]
+           ,[pay_AnsiLoop1000ANM1F66]
+           ,[pay_AnsiLoop1000BNM1F66]
+           ,[pay_AnsiReceiverName]
+           ,[pay_AnsiIDType1]
+           ,[pay_AnsiIDType2]
+           ,[pay_AnsiIDType3]
+           ,[pay_AnsiPhysIDType1]
+           ,[pay_AnsiPhysIDType2]
+           ,[pay_AnsiPhysIDType3]
+           ,[pay_InvoiceTotalRound]
+           ,[pay_InvoiceTotalRoundDecimal]
+           ,[pay_InvoiceLineRound]
+           ,[pay_InvoiceLineRoundDecimal]
+           ,[pay_EdiTypeID]
+           ,[pay_CreatedDate]
+           ,[pay_CreatedUser]
+           ,[pay_ModifiedDate]
+           ,[pay_ModifiedUser]
+           ,[pay_StatusID]
+           ,[pay_LegacyID]
+           ,[pay_LegacyBranchID]
+           ,[pay_Email]
+           ,[pay_ERNID]
+           ,[pay_Itemize1500Billing]
+           ,[pay_AllowMassEmail]
+           ,[pay_AuthorizationConflictsAllow]
+           ,[pay_AuthorizationConflictsOverride]
+           ,[pay_DailyBenefit12am]
+           ,[pay_ShowDFPSplit]
+           ,[pay_ShowDFPBalance]
+           ,[pay_ShowDFPDailyBenefit]
+           ,[pay_ShowDFPVisit]
+           ,[pay_UseClientForInsured]
+           ,[pay_InvDetailProviderTypeID]
+           ,[pay_UseBillContactForSign]
+           ,[pay_UseBillProviderForFacility]
+           ,[pay_BillByShift]
+           ,[pay_StampAuth]
+           ,[pay_DXVersionDefault]
+           ,[pay_ContactSalutationID]
+           ,[pay_InvBreakByAuth]
+           ,[pay_InvBreakByHCPCS]
+           ,[pay_InvoiceFromToType]
+           ,[pay_ShowInvFromDtOnly]
+           ,[pay_InvoiceUnitFlag]
+           ,[pay_ElectPmtGatewayCustProfileID]
+           ,[pay_ElectPmtDfltCustPmtProfileID]
+           ,[pay_InvParm_DisplayBrLogo]
+           ,[pay_InvParm_DisplayCrBalances]
+           ,[pay_InvParm_DisplayCarFistNameOnly]
+           ,[pay_InvParm_DisplayRecentPmts]
+           ,[pay_InvParm_DisplayOutstandingInv]
+           ,[pay_InvParm_DisplayDepositBalances]
+           ,[pay_InvParm_PmtWithinDays]
+           ,[pay_1500OthrPvdrType]
+           ,[pay_AuthorizationFromPhysicanOrder]
+           ,[pay_InvParm_DisplaySchTime]
+           ,[pay_485Box1UsePolicyNumber]
+           ,[pay_AnsiISAFI65]
+           ,[pay_DeliveryMethod]
+           ,[pay_AnsiSBR1032]
+           ,[pay_AnsiLoop2310A_Enable]
+           ,[pay_AnsiLoop2310B_Enable]
+           ,[pay_AnsiLoop2310C_Enable]
+           ,[pay_AnsiCLM1359]
+           ,[pay_AnsiCLM1351]
+           ,[pay_AnsiCLM1331]
+           ,[pay_AnsiCLM1325]
+           ,[pay_AnsiCLM1073_1]
+           ,[pay_EDIPostingTypeID]
+           ,[pay_AnsiLoop2300REF_9F_Enable]
+           ,[pay_EDIAdditionalID]
+           ,[pay_EDIAdditionalIDType]
+           ,[pay_InvParm_PayerInvGroupBy]
+           ,[pay_AnsiLoop2010BBNM1F1035_1]
+           ,[pay_AnsiLoop2010BBNM1F66]
+           ,[pay_AnsiLoop2010BBNM1F67]
+           ,[pay_InvParm_DisplaySchNote]
+           ,[pay_InvoiceGroupingTypeID]
+           ,[pay_WeeklyBenefitStart]
+           ,[pay_MonthlyBenefitStart]
+           ,[pay_AnsiLoop1000ANM1F1035_1]
+           ,[pay_AnsiLoop1000ANM1F67]
+           ,[pay_AnsiLoop1000BNM1F67]
+           ,[pay_AnsiGSF142]
+           ,[pay_AnsiGSF124]
+           ,[pay_AnsiLoop2000C_Enable]
+           ,[pay_ContAllowAdj]
+           ,[pay_InvBreakByPOC]
+           ,[pay_EDI837_TerminateSegmentWithLineFeed]
+           ,[pay_InvParm_DisplayRatesCharges]
+           ,[pay_Features]
+           ,[pay_EvvAggregatorId])
+    SELECT
+    [pay_BranchID]
+           ,[pay_ClientID]
+           ,'PAYER-' + CONVERT(NVARCHAR(50),NEWID())
+           ,[pay_Address1]
+           ,[pay_Address2]
+           ,[pay_City]
+           ,[pay_StateOrProvince]
+           ,[pay_PostalCode]
+           ,[pay_County]
+           ,[pay_Country]
+           ,[pay_Active]
+           ,[pay_ContactSalut]
+           ,[pay_ContactTitle]
+           ,[pay_ContactFirstName]
+           ,[pay_ContactLastName]
+           ,[pay_Phone]
+           ,[pay_PhoneType]
+           ,[pay_Notes]
+           ,[pay_PayerTypeID]
+           ,[pay_NPI]
+           ,[pay_BillTypeID]
+           ,[pay_AgencyProviderNum]
+           ,[pay_ExcludeFromBatch]
+           ,[pay_PaymentTypeID]
+           ,[pay_RegionID]
+           ,[pay_AuthRequired]
+           ,[pay_AnsiISAFI01]
+           ,[pay_AnsiISAFI02]
+           ,[pay_AnsiISAFI03]
+           ,[pay_AnsiISAFI04]
+           ,[pay_AnsiISAFI05_1]
+           ,[pay_AnsiISAFI06]
+           ,[pay_AnsiISAFI05_2]
+           ,[pay_AnsiISAFI07]
+           ,[pay_AnsiISAFI10]
+           ,[pay_AnsiISAFI11]
+           ,[pay_AnsiISAFI12]
+           ,[pay_AnsiISAFI13]
+           ,[pay_AnsiISAFI14]
+           ,[pay_AnsiISAFI15]
+           ,[pay_AnsiGSF479]
+           ,[pay_AnsiGSF28]
+           ,[pay_AnsiGSF455]
+           ,[pay_AnsiGSF480]
+           ,[pay_AnsiSTF143]
+           ,[pay_AnsiSTF329]
+           ,[pay_AnsiSTF1705]
+           ,[pay_AnsiBHTF1005]
+           ,[pay_AnsiHeaderREFF128]
+           ,[pay_AnsiHeaderREFF127]
+           ,[pay_AnsiLoop1000ANM1F98]
+           ,[pay_AnsiLoop1000BNM1F98]
+           ,[pay_AnsiLoop1000ANM1F66]
+           ,[pay_AnsiLoop1000BNM1F66]
+           ,[pay_AnsiReceiverName]
+           ,[pay_AnsiIDType1]
+           ,[pay_AnsiIDType2]
+           ,[pay_AnsiIDType3]
+           ,[pay_AnsiPhysIDType1]
+           ,[pay_AnsiPhysIDType2]
+           ,[pay_AnsiPhysIDType3]
+           ,[pay_InvoiceTotalRound]
+           ,[pay_InvoiceTotalRoundDecimal]
+           ,[pay_InvoiceLineRound]
+           ,[pay_InvoiceLineRoundDecimal]
+           ,[pay_EdiTypeID]
+           ,[pay_CreatedDate]
+           ,[pay_CreatedUser]
+           ,[pay_ModifiedDate]
+           ,[pay_ModifiedUser]
+           ,[pay_StatusID]
+           ,[pay_LegacyID]
+           ,[pay_LegacyBranchID]
+           ,[pay_Email]
+           ,[pay_ERNID]
+           ,[pay_Itemize1500Billing]
+           ,[pay_AllowMassEmail]
+           ,[pay_AuthorizationConflictsAllow]
+           ,[pay_AuthorizationConflictsOverride]
+           ,[pay_DailyBenefit12am]
+           ,[pay_ShowDFPSplit]
+           ,[pay_ShowDFPBalance]
+           ,[pay_ShowDFPDailyBenefit]
+           ,[pay_ShowDFPVisit]
+           ,[pay_UseClientForInsured]
+           ,[pay_InvDetailProviderTypeID]
+           ,[pay_UseBillContactForSign]
+           ,[pay_UseBillProviderForFacility]
+           ,[pay_BillByShift]
+           ,[pay_StampAuth]
+           ,[pay_DXVersionDefault]
+           ,[pay_ContactSalutationID]
+           ,[pay_InvBreakByAuth]
+           ,[pay_InvBreakByHCPCS]
+           ,[pay_InvoiceFromToType]
+           ,[pay_ShowInvFromDtOnly]
+           ,[pay_InvoiceUnitFlag]
+           ,[pay_ElectPmtGatewayCustProfileID]
+           ,[pay_ElectPmtDfltCustPmtProfileID]
+           ,[pay_InvParm_DisplayBrLogo]
+           ,[pay_InvParm_DisplayCrBalances]
+           ,[pay_InvParm_DisplayCarFistNameOnly]
+           ,[pay_InvParm_DisplayRecentPmts]
+           ,[pay_InvParm_DisplayOutstandingInv]
+           ,[pay_InvParm_DisplayDepositBalances]
+           ,[pay_InvParm_PmtWithinDays]
+           ,[pay_1500OthrPvdrType]
+           ,[pay_AuthorizationFromPhysicanOrder]
+           ,[pay_InvParm_DisplaySchTime]
+           ,[pay_485Box1UsePolicyNumber]
+           ,[pay_AnsiISAFI65]
+           ,[pay_DeliveryMethod]
+           ,[pay_AnsiSBR1032]
+           ,[pay_AnsiLoop2310A_Enable]
+           ,[pay_AnsiLoop2310B_Enable]
+           ,[pay_AnsiLoop2310C_Enable]
+           ,[pay_AnsiCLM1359]
+           ,[pay_AnsiCLM1351]
+           ,[pay_AnsiCLM1331]
+           ,[pay_AnsiCLM1325]
+           ,[pay_AnsiCLM1073_1]
+           ,[pay_EDIPostingTypeID]
+           ,[pay_AnsiLoop2300REF_9F_Enable]
+           ,[pay_EDIAdditionalID]
+           ,[pay_EDIAdditionalIDType]
+           ,[pay_InvParm_PayerInvGroupBy]
+           ,[pay_AnsiLoop2010BBNM1F1035_1]
+           ,[pay_AnsiLoop2010BBNM1F66]
+           ,[pay_AnsiLoop2010BBNM1F67]
+           ,[pay_InvParm_DisplaySchNote]
+           ,[pay_InvoiceGroupingTypeID]
+           ,[pay_WeeklyBenefitStart]
+           ,[pay_MonthlyBenefitStart]
+           ,[pay_AnsiLoop1000ANM1F1035_1]
+           ,[pay_AnsiLoop1000ANM1F67]
+           ,[pay_AnsiLoop1000BNM1F67]
+           ,[pay_AnsiGSF142]
+           ,[pay_AnsiGSF124]
+           ,[pay_AnsiLoop2000C_Enable]
+           ,[pay_ContAllowAdj]
+           ,[pay_InvBreakByPOC]
+           ,[pay_EDI837_TerminateSegmentWithLineFeed]
+           ,[pay_InvParm_DisplayRatesCharges]
+           ,[pay_Features]
+           ,[pay_EvvAggregatorId]
+		FROM T_Payers WHERE pay_ID &lt;= 50407</value>
+  </data>
+  <data name="PayerServicesCacheInsert" xml:space="preserve">
+    <value>INSERT INTO [dbo].[T_PayerServices]
+           ([paysvc_PayerID]
+           ,[paysvc_ServiceCodeID]
+           ,[paysvc_HCPCCode]
+           ,[paysvc_UseDefaultHCPC]
+           ,[paysvc_DefaultBillRateUnitFlag]
+           ,[paysvc_DefaultPayRateUnitFlag]
+           ,[paysvc_RevenueCode]
+           ,[paysvc_PayCode]
+           ,[paysvc_EffectiveFrom]
+           ,[paysvc_EffectiveTo]
+           ,[paysvc_TaxGroupID]
+           ,[paysvc_CreatedDate]
+           ,[paysvc_CreatedUser]
+           ,[paysvc_ModifiedDate]
+           ,[paysvc_ModifiedUser]
+           ,[paysvc_AuthRequired]
+           ,[paysvc_1500BillingModifierID1]
+           ,[paysvc_1500BillingModifierID2]
+           ,[paysvc_1500BillingModifierID3]
+           ,[paysvc_1500BillingModifierID4]
+           ,[paysvc_EVVEnabled])
+    SELECT
+    [paysvc_PayerID]
+    ,[paysvc_ServiceCodeID]
+    ,[paysvc_HCPCCode]
+    ,[paysvc_UseDefaultHCPC]
+    ,[paysvc_DefaultBillRateUnitFlag]
+    ,[paysvc_DefaultPayRateUnitFlag]
+    ,[paysvc_RevenueCode]
+    ,[paysvc_PayCode]
+    ,DATEADD(SECOND,1,[paysvc_EffectiveFrom])
+    ,DATEADD(SECOND,1,[paysvc_EffectiveTo])
+    ,[paysvc_TaxGroupID]
+    ,[paysvc_CreatedDate]
+    ,[paysvc_CreatedUser]
+    ,[paysvc_ModifiedDate]
+    ,[paysvc_ModifiedUser]
+    ,[paysvc_AuthRequired]
+    ,[paysvc_1500BillingModifierID1]
+    ,[paysvc_1500BillingModifierID2]
+    ,[paysvc_1500BillingModifierID3]
+    ,[paysvc_1500BillingModifierID4]
+    ,[paysvc_EVVEnabled]
+	FROM T_PayerServices
+	WHERE paysvc_ID &lt; 30000</value>
+  </data>
+  <data name="Restore_Sql" xml:space="preserve">
+    <value>if exists (Select * from sys.databases where name = '{0}') BEGIN DROP DATABASE {0} END ; 
+RESTORE DATABASE [{0}] FROM  DISK = N'{1}\{0}.bak' WITH  FILE = 1,  NOUNLOAD,  REPLACE,  STATS = 5</value>
+  </data>
+  <data name="Set_Single_User_Sql" xml:space="preserve">
+    <value>if exists (Select * from sys.databases where name = '{0}') BEGIN ALTER DATABASE {0} SET SINGLE_USER WITH ROLLBACK IMMEDIATE; END</value>
+  </data>
+</root>
